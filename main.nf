@@ -298,10 +298,10 @@ process VariantRecalibrator_SNPs {
 	gatk VariantRecalibrator \
 	-V $haplotypecaller_vcf \
  	-R $reference \
-	-resource hapmap,known=false,training=true,truth=true,prior=15.0:./$hapmap \
-	-resource omni,known=false,training=true,truth=true,prior=12.0:./$omni \
-    	-resource 1000G,known=false,training=true,truth=false,prior=10.0:./$phase1_snps \
-    	-resource dbsnp,known=true,training=false,truth=false,prior=2.0:./$dbsnp \
+	-resource hapmap,known=false,training=true,truth=true,prior=15.0 ./$hapmap \
+	-resource omni,known=false,training=true,truth=true,prior=12.0 ./$omni \
+    	-resource 1000G,known=false,training=true,truth=false,prior=10.0 ./$phase1_snps \
+    	-resource dbsnp,known=true,training=false,truth=false,prior=2.0 ./$dbsnp \
 	-an DP \
     	-an QD \
 	-an FS \
@@ -370,8 +370,8 @@ process VariantRecalibrator_INDELs {
 	gatk VariantRecalibrator \
 	-V $recalibrated_snps_raw_indels \
  	-R $reference \
-	--resource mills,known=false,training=true,truth=true,prior=12.0:./$golden_indel \
-    	--resource dbsnp,known=true,training=false,truth=false,prior=2.0:./$dbsnp \
+	--resource mills,known=false,training=true,truth=true,prior=12.0 ./$golden_indel \
+    	--resource dbsnp,known=true,training=false,truth=false,prior=2.0 ./$dbsnp \
 	-an QD \
     	-an DP \
     	-an FS \
