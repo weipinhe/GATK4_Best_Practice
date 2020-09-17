@@ -1,6 +1,8 @@
 # GATK4 Best Practice Nextflow Pipeline
 **GATK4 Best Practice Nextflow Pipeline** is a variant calling pipeline for human whole genome sequencing based on the [GATK best practice](https://software.broadinstitute.org/gatk/best-practices/workflow).
 
+This is a fork of the oliverSI/GATK4_Best_Practice github repo.
+
 ## Requirements
 * <a href="https://www.nextflow.io/">NextFlow</a>
 * <a href="https://www.docker.com/">Docker</a>
@@ -9,7 +11,7 @@
 ## Running the pipeline
 There is no need to download the code explicitly. Nextflow seamlessly intergrates with GitHub with the following command.
   ```
-  nextflow run oliverSI/GATK4_Best_Practice --fastq1 read_R1.fastq.gz --fastq2 read_R2.fastq.gz
+  nextflow run weipinhe/GATK4_Best_Practice --fastq1 read_R1.fastq.gz --fastq2 read_R2.fastq.gz
   ```
   ```
   N E X T F L O W  ~  version 0.25.6
