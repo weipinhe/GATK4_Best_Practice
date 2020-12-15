@@ -147,9 +147,9 @@ process BWA {
 	file reference
 	file bwa_index
 	// file fastq1
-	path x, stageAs: 'fastq1_input' from $params.fastq1
+	path x, stageAs: 'fastq1_input' from params.fastq1
 	// file fastq2
-	path y, stageAs: 'fastq2_input' from $params.fastq2
+	path y, stageAs: 'fastq2_input' from params.fastq2
 
 	output:
 	file 'aln-pe.sam' into samfile
