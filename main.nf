@@ -29,9 +29,13 @@ if (params.help) {
 
 fastq1 = file("$params.fastq1")
 fastq2 = file("$params.fastq2")
-params.outdir = "./Results"
-params.samplename = fastq1.baseName
-params.rg = fastq1.baseName
+params.fastq1 = "s3://1000genomes/phase3/data/NA21144/sequence_read/ERR047877_1.filt.fastq.gz"
+params.fastq2 = "s3://1000genomes/phase3/data/NA21144/sequence_read/ERR047877_2.filt.fastq.gz"
+params.outdir = "s3://weipinhe-nextflow-tower-aws/results"
+//params.samplename = fastq1.baseName
+params.samplename = "WepinheTest1"
+//params.rg = fastq1.baseName
+params.rg = "WepinheTest1"
 
 process get_reference {
 	publishDir "${params.outdir}/reference"
@@ -143,9 +147,9 @@ process BWA {
 	file reference
 	file bwa_index
 	// file fastq1
-	path x, stageAs: 'fastq1_input' from fastq1
+	path x, stageAs: 'fastq1_input' from $params.fastq1
 	// file fastq2
-	path y, stageAs: 'fastq2_input' from fastq2
+	path y, stageAs: 'fastq2_input' from $params.fastq2
 
 	output:
 	file 'aln-pe.sam' into samfile
