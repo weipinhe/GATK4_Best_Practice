@@ -142,14 +142,16 @@ process BWA {
 	input:
 	file reference
 	file bwa_index
-	file fastq1
-	file fastq2
+	// file fastq1
+	path x, stageAs: 'fastq1_input' from fastq1
+	// file fastq2
+	path y, stageAs: 'fastq2_input' from fastq2
 
 	output:
 	file 'aln-pe.sam' into samfile
 	
 	"""
-	bwa mem -M -R '@RG\\tID:${params.rg}\\tSM:${params.samplename}\\tPL:Illumina' $reference $fastq1 $fastq2 > aln-pe.sam
+	bwa mem -M -R '@RG\\tID:${params.rg}\\tSM:${params.samplename}\\tPL:Illumina' $reference fastq1_input fastq2_input > aln-pe.sam
 	"""
 		
 }
